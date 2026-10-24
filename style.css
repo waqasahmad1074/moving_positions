@@ -1,0 +1,197 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background-color: rgb(221, 217, 152);
+    overflow-x: hidden;
+    font-family: Arial, sans-serif;
+}
+
+/* Main box */
+.container {
+    height: 500px;
+    width: 500px;
+    max-width: 90vw;
+    background-color: rgb(221, 217, 152);
+    border: 3px solid white;
+    border-radius: 15px;
+    margin: 100px auto;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Common ball styling */
+.ball {
+    height: 85px;
+    width: 85px;
+    border: 2px solid white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    position: absolute;
+    animation: bounce 3s infinite ease-in-out alternate;
+}
+
+/* Individual ball colors and animation delays */
+.boxone {
+    background-color: rgb(166, 206, 129);
+    top: 10px;
+    left: 10px;
+    animation-delay: 0s;
+}
+
+.boxtwo {
+    background-color: rgb(206, 129, 129);
+    top: 10px;
+    left: 110px;
+    animation-delay: -0.7s;
+}
+
+.boxthree {
+    background-color: rgb(206, 182, 129);
+    top: 10px;
+    left: 210px;
+    animation-delay: -1.4s;
+}
+
+.boxfour {
+    background-color: rgb(129, 206, 161);
+    top: 10px;
+    left: 310px;
+    animation-delay: -2.1s;
+}
+
+.boxfive {
+    background-color: rgb(152, 129, 206);
+    top: 10px;
+    left: 410px;
+    animation-delay: -2.8s;
+}
+
+/* Rubber ball movement inside the box */
+@keyframes bounce {
+    0% {
+        transform: translate(0, 0) scale(1, 1);
+    }
+
+    20% {
+        transform: translate(30px, 100px) scale(1.08, 0.92);
+    }
+
+    40% {
+        transform: translate(100px, 300px) scale(0.92, 1.08);
+    }
+
+    60% {
+        transform: translate(200px, 350px) scale(1.08, 0.92);
+    }
+
+    80% {
+        transform: translate(280px, 180px) scale(0.95, 1.05);
+    }
+
+    100% {
+        transform: translate(300px, 50px) scale(1, 1);
+    }
+}
+
+/* One bubble bouncing outside the box */
+.outside-bubble {
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+
+    background: radial-gradient(
+        circle at 30% 25%,
+        #ffffff,
+        #60d9ef 35%,
+        #4588f5 75%,
+        #7655d9
+    );
+
+    border: 2px solid rgba(255, 255, 255, 0.8);
+
+    box-shadow:
+        inset -8px -8px 15px rgba(50, 50, 150, 0.3),
+        0 5px 15px rgba(0, 0, 0, 0.15);
+
+    animation: outsideBounce 5s infinite alternate ease-in-out;
+}
+
+/* Bubble movement around the screen */
+@keyframes outsideBounce {
+    0% {
+        top: 20px;
+        left: 20px;
+        transform: scale(1);
+    }
+
+    25% {
+        top: 20px;
+        left: calc(100vw - 90px);
+        transform: scale(0.9, 1.1);
+    }
+
+    50% {
+        top: calc(100vh - 90px);
+        left: calc(100vw - 90px);
+        transform: scale(1.1, 0.9);
+    }
+
+    75% {
+        top: calc(100vh - 90px);
+        left: 20px;
+        transform: scale(0.9, 1.1);
+    }
+
+    100% {
+        top: 20px;
+        left: 20px;
+        transform: scale(1);
+    }
+}
+
+/* Smaller screens */
+@media (max-width: 550px) {
+    .container {
+        height: 450px;
+        margin-top: 100px;
+    }
+
+    .ball {
+        height: 65px;
+        width: 65px;
+        font-size: 11px;
+    }
+
+    .boxone {
+        left: 5px;
+    }
+
+    .boxtwo {
+        left: 95px;
+    }
+
+    .boxthree {
+        left: 185px;
+    }
+
+    .boxfour {
+        left: 275px;
+    }
+
+    .boxfive {
+        left: 365px;
+    }
+}
